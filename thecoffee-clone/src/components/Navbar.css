@@ -1,0 +1,240 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--nav-height);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 32px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: var(--transition);
+    border-bottom: 1px solid transparent;
+}
+
+.navbar--scrolled {
+    border-bottom-color: var(--light-gray);
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Languages */
+.navbar__langs {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.navbar__lang {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--mid-gray);
+    transition: color 0.2s;
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.navbar__lang--active {
+    color: var(--black);
+    font-weight: 500;
+}
+
+.navbar__lang:hover {
+    color: var(--black);
+}
+
+/* Logo */
+.navbar__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    text-decoration: none;
+}
+
+.navbar__logo-en {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--black);
+    line-height: 1;
+}
+
+.navbar__logo-jp {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--mid-gray);
+    line-height: 1;
+}
+
+/* Right side */
+.navbar__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.navbar__socials {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.navbar__social {
+    color: var(--black);
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+}
+
+.navbar__social:hover {
+    opacity: 0.5;
+}
+
+.navbar__social svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Burger */
+.navbar__burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.navbar__burger span {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: var(--black);
+    transition: var(--transition);
+    transform-origin: center;
+}
+
+.navbar__burger--open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.navbar__burger--open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.navbar__burger--open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Full menu overlay */
+.fullmenu {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.fullmenu--open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.fullmenu__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+.fullmenu__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.fullmenu__link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-display);
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    text-decoration: none;
+    transition: color 0.3s, opacity 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s, color 0.2s;
+}
+
+.fullmenu--open .fullmenu__link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fullmenu__link:hover {
+    color: var(--accent-dark);
+}
+
+.fullmenu__link--active {
+    color: var(--accent-dark);
+}
+
+.fullmenu__link-num {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--mid-gray);
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+}
+
+.fullmenu__footer {
+    text-align: center;
+    color: var(--mid-gray);
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 2;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .navbar__langs {
+        gap: 8px;
+    }
+
+    .navbar__lang {
+        font-size: 10px;
+    }
+
+    .navbar__socials {
+        display: none;
+    }
+}

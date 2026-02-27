@@ -1,0 +1,5 @@
+/* App-level styles */
+.page {
+  min-height: 100vh;
+  padding-top: var(--nav-height);
+}
