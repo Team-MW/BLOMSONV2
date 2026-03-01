@@ -7,6 +7,7 @@ import Locations from './pages/Locations'
 import Franchise from './pages/Franchise'
 import Contact from './pages/Contact'
 import AboutUs from './pages/AboutUs'
+import LegalMentions from './pages/LegalMentions'
 import './App.css'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/franchise" element={<Franchise />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/mentions-legales" element={<LegalMentions />} />
       </Routes>
       <Footer />
     </Router>
