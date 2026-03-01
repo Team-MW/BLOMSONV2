@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
+import imageCarte from '../assets/carte.png'
+import slide2 from '../assets/slide2.jpg'
+import slide3 from '../assets/slide3.jpeg'
+import slide4 from '../assets/slide4.jpg'
+import slide5 from '../assets/slide5.jpg'
 
 // Slide indicators component
 function SlideIndicators({ count, active, onChange }) {
@@ -55,6 +60,8 @@ export default function Home() {
     const [historyRef, historyInView] = useInView(0.2)
     const [pressRef, pressInView] = useInView(0.2)
     const [globalRef, globalInView] = useInView(0.2)
+    const [carteRef, carteInView] = useInView(0.2)
+    const [galleryRef, galleryInView] = useInView(0.2)
 
     // Auto-advance slides
     useEffect(() => {
@@ -105,16 +112,14 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ── APP BANNER (LA CARTE) ── */}
-            <section id="menu" className="app-banner">
-                <div className="app-banner__inner">
-                    <div className="app-banner__text">
-                        <span className="app-banner__label">gourmandise 100% maison</span>
-                        <Link to="/menu" className="app-banner__link">
-                            découvrir la carte
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                        </Link>
-                    </div>
+            {/* ── NOTRE CARTE (IMAGE) ── */}
+            <section id="menu" className="carte-section" ref={carteRef}>
+                <div className={`carte-section__header ${carteInView ? 'fade-up' : 'fade-hidden'}`}>
+                    <span className="section-eyebrow">gourmandise 100% maison</span>
+                    <h2 className="section-title">Notre Carte</h2>
+                </div>
+                <div className={`carte-section__img ${carteInView ? 'fade-up fade-up--delay' : 'fade-hidden'}`}>
+                    <img src={imageCarte} alt="Carte du Brunch Blossom Coffee" />
                 </div>
             </section>
 
@@ -200,6 +205,21 @@ export default function Home() {
                             <span className="history__stat-label">Fait Maison</span>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* ── GALERIE ── */}
+            <section className="gallery-section" ref={galleryRef}>
+                <div className={`gallery__header ${galleryInView ? 'fade-up' : 'fade-hidden'}`}>
+                    <span className="section-eyebrow">Immerger</span>
+                    <h2 className="section-title">Notre Univers</h2>
+                </div>
+                <div className={`gallery__grid ${galleryInView ? 'fade-up fade-up--delay' : 'fade-hidden'}`}>
+                    {[slide2, slide3, slide4, slide5].map((imgUrl, i) => (
+                        <div key={i} className="gallery__item">
+                            <img src={imgUrl} alt={`Ambiance Blossom ${i + 1}`} className="gallery__img" />
+                        </div>
+                    ))}
                 </div>
             </section>
 
