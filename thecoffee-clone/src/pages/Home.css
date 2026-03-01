@@ -783,8 +783,8 @@
     }
 
     .roasters__media {
-        height: 50vw;
-        min-height: 300px;
+        height: 60vw;
+        min-height: 350px;
     }
 
     .roasters__text {
@@ -803,6 +803,11 @@
 
     .press__grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .press__logo {
+        padding: 40px 32px;
     }
 
     .investors {
@@ -817,6 +822,15 @@
         left: 50%;
         transform: translateX(-50%);
     }
+
+    .global {
+        min-height: auto;
+        padding: 80px 0;
+    }
+
+    .global__info-card {
+        padding: 32px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -824,19 +838,54 @@
         padding: 24px 20px;
     }
 
+    .app-banner__text {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .roasters__text {
+        padding: 60px 20px;
+    }
+
+    .history {
+        padding: 60px 20px;
+        gap: 40px;
+    }
+
     .history__stats {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr;
+    }
+
+    .press {
+        padding: 60px 20px;
     }
 
     .press__grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+    }
+
+    .press__logo {
+        padding: 32px 24px;
     }
 
     .slide-indicators {
         right: 20px;
+        bottom: auto;
     }
 
     .hero__cta-pill {
         left: 20px;
+    }
+
+    .global__info-card {
+        padding: 24px;
+        margin: 0 auto 32px;
+        gap: 16px;
+    }
+
+    .global__content {
+        padding: 20px;
     }
 }
