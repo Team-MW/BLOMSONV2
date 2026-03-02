@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -12,19 +13,25 @@ import './App.css'
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/ourbean" element={<OurBean />} />
-        <Route path="/locations" element={<Locations />} />
-        <Route path="/franchise" element={<Franchise />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/mentions-legales" element={<LegalMentions />} />
-        <Route path="/faq" element={<FAQ />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <>
+      <Helmet>
+        <title>Blossom Coffee | Brunch & Specialty Coffee à Toulouse</title>
+        <meta name="description" content="Découvrez Blossom Coffee, votre coffee shop et brunch immersif au centre de Toulouse. Café de spécialité, pâtisseries maison et ambiance conceptuelle vibrante." />
+      </Helmet>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/ourbean" element={<OurBean />} />
+          <Route path="/locations" element={<Locations />} />
+          <Route path="/franchise" element={<Franchise />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/mentions-legales" element={<LegalMentions />} />
+          <Route path="/faq" element={<FAQ />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </>
   )
 }
 

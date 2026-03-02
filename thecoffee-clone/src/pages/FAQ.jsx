@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import './FAQ.css'
 
 const faqsData = [
@@ -70,13 +71,13 @@ export default function FAQ() {
         setOpenIndex(openIndex === index ? null : index)
     }
 
-    useEffect(() => {
-        document.title = "FAQ | Blossom Coffee";
-        document.querySelector('meta[name="description"]')?.setAttribute("content", "Découvrez notre foire aux questions. Toutes les réponses sur notre café de spécialité, notre brunch, et plus encore.");
-    }, []);
-
     return (
         <>
+            <Helmet>
+                <title>FAQ | Blossom Coffee</title>
+                <meta name="description" content="Découvrez notre foire aux questions. Toutes les réponses sur notre café de spécialité, notre brunch, et plus encore." />
+            </Helmet>
+
             <main className="faq-page">
                 <section className="faq-hero">
                     <div className="faq-hero-container">
