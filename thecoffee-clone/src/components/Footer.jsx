@@ -68,7 +68,6 @@ export default function Footer() {
                         <h3 className="footer__col-title">Informations</h3>
                         <nav className="footer__nav" style={{ color: 'var(--mid-gray)', fontSize: '13px', lineHeight: '1.5' }}>
                             <Link to="/#faq" style={{ textDecoration: 'none' }}>Vos questions</Link>
-                            <Link to="/contact" style={{ textDecoration: 'none' }}>Contactez-nous</Link>
                             <Link to="/mentions-legales" style={{ textDecoration: 'none' }}>Mentions Légales</Link>
                         </nav>
                     </div>

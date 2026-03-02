@@ -44,12 +44,14 @@ const HERO_SLIDES = [
         title: 'Brunch. Coffee.',
         sub: 'Toulouse Centre',
         action: 'Le Menu',
+        link: '#menu',
     },
     {
         img: '/blossom_cafe_interior.png',
         title: 'Good Vibes.',
         sub: 'Ambiance Blossom',
         action: 'Réserver 🥞',
+        link: 'tel:+33783846168',
     }
 ]
 
@@ -95,10 +97,10 @@ export default function Home() {
                 </div>
 
                 <div className="hero__bottom">
-                    <Link to="#action" className="hero__cta-pill">
+                    <a href={HERO_SLIDES[slide].link} className="hero__cta-pill">
                         <span>{HERO_SLIDES[slide].action}</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
-                    </Link>
+                    </a>
 
                     <button className="hero__plus" aria-label="Scroll down">
                         <span>+</span>
@@ -119,7 +121,9 @@ export default function Home() {
                     <h2 className="section-title">Notre Carte</h2>
                 </div>
                 <div className={`carte-section__img ${carteInView ? 'fade-up fade-up--delay' : 'fade-hidden'}`}>
-                    <img src={imageCarte} alt="Carte du Brunch Blossom Coffee" />
+                    <a href={imageCarte} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
+                        <img src={imageCarte} alt="Carte du Brunch Blossom Coffee" />
+                    </a>
                 </div>
             </section>
 
@@ -232,23 +236,23 @@ export default function Home() {
                         ⭐ 4.9/5 sur Google
                     </div>
                 </div>
-                <div className={`press__grid ${pressInView ? 'fade-up fade-up--delay' : 'fade-hidden'}`} style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px' }}>
+                <div className={`press__grid ${pressInView ? 'fade-up fade-up--delay' : 'fade-hidden'}`}>
 
-                    <div className="press__logo" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '40px' }}>
+                    <div className="press__logo" style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                         <span style={{ fontStyle: 'normal', fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '16px', color: 'var(--black)', marginBottom: '15px' }}>Léa D.</span>
                         <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'var(--dark-gray)', textAlign: 'left', fontStyle: 'italic' }}>
                             "Le meilleur café de Toulouse ! L'ambiance est incroyable, la déco est super colorée et l'équipe est adorable. Les pancakes sont une tuerie."
                         </p>
                     </div>
 
-                    <div className="press__logo" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '40px' }}>
+                    <div className="press__logo" style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                         <span style={{ fontStyle: 'normal', fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '16px', color: 'var(--black)', marginBottom: '15px' }}>Thomas M.</span>
                         <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'var(--dark-gray)', textAlign: 'left', fontStyle: 'italic' }}>
                             "Un spot parfait pour bosser ou chiller. Le café est excellent (vrai specialty coffee) et les pâtisseries maison sont à tomber. Je recommande !"
                         </p>
                     </div>
 
-                    <div className="press__logo" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '40px' }}>
+                    <div className="press__logo" style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                         <span style={{ fontStyle: 'normal', fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '16px', color: 'var(--black)', marginBottom: '15px' }}>Sarah B.</span>
                         <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'var(--dark-gray)', textAlign: 'left', fontStyle: 'italic' }}>
                             "Gros coup de cœur pour le Blossom ! C'est pop, c'est frais, ça change. Le brunch du dimanche est devenu notre rituel."
@@ -287,9 +291,9 @@ export default function Home() {
                             <p>🚇 Métro A - Esquirol<br />🚌 Bus L4, L7, L9</p>
                         </div>
                     </div>
-                    <Link to="/contact" className="btn-white">
-                        Des questions ? FAQ
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                    <Link to="/faq" className="btn-white" style={{ marginTop: '20px', padding: '15px 30px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                        FAQ
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ marginLeft: '10px', width: '20px', height: '20px' }}><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                     </Link>
                 </div>
             </section>

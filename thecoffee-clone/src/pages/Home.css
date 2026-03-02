@@ -898,8 +898,28 @@
         bottom: auto;
     }
 
+    .hero__title {
+        font-size: clamp(38px, 10vw, 56px);
+        margin-bottom: 16px;
+    }
+
+    .hero__jp {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .hero__tagline {
+        font-size: 14px;
+        letter-spacing: 0.15em;
+    }
+
     .hero__cta-pill {
         left: 20px;
+        padding: 24px 32px;
+    }
+
+    .section-title {
+        font-size: clamp(32px, 8vw, 42px);
     }
 
     .global__info-card {

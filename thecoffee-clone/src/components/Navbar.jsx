@@ -53,7 +53,6 @@ export default function Navbar() {
         { label: 'Gourmandise', path: '/#gourmandise' },
         { label: 'Où nous trouver ?', path: '/#locations' },
         { label: 'Vos Avis', path: '/#faq' },
-        { label: 'Contact', path: '/contact' },
     ]
 
     return (
