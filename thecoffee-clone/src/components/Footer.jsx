@@ -36,13 +36,13 @@ export default function Footer() {
                     <div className="footer__col">
                         <h3 className="footer__col-title">Horaires</h3>
                         <nav className="footer__nav" style={{ color: 'var(--mid-gray)', fontSize: '13px', lineHeight: '2' }}>
-                            <span>Lundi 11:00–18:45</span>
-                            <span>Mardi 11:00–18:45</span>
-                            <span>Mercredi 11:00–18:45</span>
-                            <span>Jeudi 11:00–18:45</span>
-                            <span>Vendredi 11:00–18:45</span>
-                            <span>Samedi 11:00–18:45</span>
-                            <span>Dimanche 11:00–18:45</span>
+                            <span>Lundi 11:30–19:00</span>
+                            <span>Mardi 11:30–19:00</span>
+                            <span>Mercredi 11:30–19:00</span>
+                            <span>Jeudi 11:30–19:00</span>
+                            <span>Vendredi 11:30–19:00</span>
+                            <span>Samedi 10:30–19:00</span>
+                            <span>Dimanche 10:30–19:00</span>
                         </nav>
                     </div>
                     <div className="footer__col">

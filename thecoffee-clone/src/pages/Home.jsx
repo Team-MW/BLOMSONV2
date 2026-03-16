@@ -203,12 +203,12 @@ export default function Home() {
                         </div>
                         <div className="history__stats">
                             <div className="history__stat">
-                                <span className="history__stat-num" style={{ fontSize: '20px' }}>11:00</span>
-                                <span className="history__stat-label">Ouverture</span>
+                                <span className="history__stat-num" style={{ fontSize: '18px', whiteSpace: 'nowrap' }}>11:30 - 19:00</span>
+                                <span className="history__stat-label">Lun - Ven</span>
                             </div>
                             <div className="history__stat">
-                                <span className="history__stat-num" style={{ fontSize: '20px' }}>18:45</span>
-                                <span className="history__stat-label">Fermeture</span>
+                                <span className="history__stat-num" style={{ fontSize: '18px', whiteSpace: 'nowrap' }}>10:30 - 19:00</span>
+                                <span className="history__stat-label">Sam - Dim</span>
                             </div>
                             <div className="history__stat">
                                 <span className="history__stat-num" style={{ fontSize: '20px' }}>100%</span>
@@ -239,7 +239,7 @@ export default function Home() {
                         <span className="section-eyebrow">Vos Avis</span>
                         <h2 className="section-title" style={{ marginBottom: '10px' }}>Ils nous kiffent grave</h2>
                         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'var(--white)', padding: '8px 16px', borderRadius: '20px', fontSize: '12px', border: '1px solid var(--light-gray)' }}>
-                            ⭐ 4.9/5 sur Google
+                            ⭐ 4.5/5 sur Google
                         </div>
                     </div>
                     <div className={`press__grid ${pressInView ? 'fade-up fade-up--delay' : 'fade-hidden'}`}>
@@ -290,8 +290,8 @@ export default function Home() {
                             </div>
                             <div className="global__info-divider" />
                             <div className="global__info-item">
-                                <h4>Accessibilité</h4>
-                                <p>Notre établissement est entièrement accessible aux personnes à mobilité réduite (PMR). Rampe d'accès et toilettes adaptées.</p>
+                                <h4>Espaces</h4>
+                                <p>Nous disposons d'une terrasse ainsi que d'une salle à l'étage pour vous accueillir (toilettes non accessibles PMR).</p>
                             </div>
                             <div className="global__info-item">
                                 <p>🚇 Métro A - Esquirol<br />🚌 Bus L4, L7, L9</p>
