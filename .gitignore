@@ -1,0 +1,18 @@
+# Dépendances & Builds
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Dossiers sources photos brutes du photographe (128 Mo non web)
+*PHOTOS BLOSSOM SITE*
+
+# Fichiers temporaires ou bruts
+*_raw.jpg
+*.raw.jpg
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
