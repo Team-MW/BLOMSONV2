@@ -2,11 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import './Home.css'
+import PhotoGallery from '../components/PhotoGallery'
 import imageCarte from '../assets/carte.png'
-import slide2 from '../assets/slide2.jpg'
-import slide3 from '../assets/slide3.jpeg'
-import slide4 from '../assets/slide4.jpg'
-import slide5 from '../assets/slide5.jpg'
 
 // Slide indicators component
 function SlideIndicators({ count, active, onChange }) {
@@ -120,16 +117,122 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* ── NOTRE CARTE (IMAGE) ── */}
+                {/* ── NOTRE CARTE (PDF & TÉLÉCHARGEMENT) ── */}
                 <section id="menu" className="carte-section" ref={carteRef}>
                     <div className={`carte-section__header ${carteInView ? 'fade-up' : 'fade-hidden'}`}>
+                        <div className="carte-badge">
+                            <span className="carte-badge__pulse"></span>
+                            <span>Nouvelle Carte de Saison</span>
+                        </div>
                         <span className="section-eyebrow">gourmandise 100% maison</span>
-                        <h2 className="section-title">Notre Carte</h2>
+                        <h2 className="section-title">La Carte Blossom</h2>
+                        <p className="carte-section__lead">
+                            Une cuisine fraîche et sincère, des cafés de spécialité sélectionnés avec passion, et des pâtisseries maison cuisinées chaque matin.
+                        </p>
+
+                        <div className="carte-actions">
+                            <a
+                                href="/carte.pdf"
+                                download="Carte-Blossom-Coffee.pdf"
+                                className="btn-carte-download"
+                                title="Télécharger la carte au format PDF"
+                            >
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                <span>Télécharger la Carte (PDF)</span>
+                                <span className="btn-carte-pill">PDF • HD</span>
+                            </a>
+
+                            <a
+                                href="/carte.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-carte-view"
+                                title="Ouvrir le menu en plein écran"
+                            >
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>Consulter en Plein Écran</span>
+                            </a>
+                        </div>
                     </div>
-                    <div className={`carte-section__img ${carteInView ? 'fade-up fade-up--delay' : 'fade-hidden'}`}>
-                        <a href={imageCarte} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
-                            <img src={imageCarte} alt="Carte du Brunch Blossom Coffee" />
-                        </a>
+
+                    {/* Menu Highlights preview */}
+                    <div className={`carte-highlights ${carteInView ? 'fade-up fade-up--delay' : 'fade-hidden'}`}>
+                        <div className="carte-highlight-card">
+                            <span className="carte-highlight-icon">☕</span>
+                            <h3>Specialty Coffee</h3>
+                            <p>Espresso d'origine, Flat White velouté, V60 & lattes signatures préparés par nos baristas.</p>
+                        </div>
+                        <div className="carte-highlight-card">
+                            <span className="carte-highlight-icon">🥞</span>
+                            <h3>Brunch Sucré & Salé</h3>
+                            <p>Fluffy pancakes moelleux, brioche perdue artisanale, toasties gourmands et assiettes complètes.</p>
+                        </div>
+                        <div className="carte-highlight-card">
+                            <span className="carte-highlight-icon">🌿</span>
+                            <h3>100% Fait Maison</h3>
+                            <p>Ingrédients frais et locaux, produits de saison, options végétariennes & laits végétaux.</p>
+                        </div>
+                    </div>
+
+                    {/* Visual Card Mockup with Quick Actions */}
+                    <div className={`carte-section__img ${carteInView ? 'fade-up fade-up--delay2' : 'fade-hidden'}`}>
+                        <div className="carte-display-card">
+                            <div className="carte-display-card__bar">
+                                <div className="carte-display-card__dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <span className="carte-display-card__filename">Carte-Blossom-Coffee.pdf</span>
+                                <a
+                                    href="/carte.pdf"
+                                    download="Carte-Blossom-Coffee.pdf"
+                                    className="carte-display-card__quick-dl"
+                                    title="Télécharger directement la carte PDF"
+                                >
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                        <polyline points="7 10 12 15 17 10" />
+                                        <line x1="12" y1="15" x2="12" y2="3" />
+                                    </svg>
+                                    <span>Télécharger le PDF</span>
+                                </a>
+                            </div>
+
+                            <a
+                                href="/carte.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="carte-display-card__link"
+                                title="Cliquer pour afficher la carte en taille réelle"
+                            >
+                                <img src={imageCarte} alt="Carte du Brunch Blossom Coffee à Toulouse" />
+                                <div className="carte-display-card__hover-overlay">
+                                    <div className="carte-display-card__hover-btn">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                        </svg>
+                                        <span>Agrandir / Ouvrir le PDF</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div className="carte-display-card__bottom-bar">
+                                <p>Disponible 7j/7 au café • 11 Rue des Trois Renards, 31000 Toulouse</p>
+                                <a
+                                    href="/carte.pdf"
+                                    download="Carte-Blossom-Coffee.pdf"
+                                    className="carte-bottom-download-link"
+                                >
+                                    Télécharger le PDF (154 Ko) →
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -218,20 +321,8 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* ── GALERIE ── */}
-                <section className="gallery-section" ref={galleryRef}>
-                    <div className={`gallery__header ${galleryInView ? 'fade-up' : 'fade-hidden'}`}>
-                        <span className="section-eyebrow">Immerger</span>
-                        <h2 className="section-title">Notre Univers</h2>
-                    </div>
-                    <div className={`gallery__grid ${galleryInView ? 'fade-up fade-up--delay' : 'fade-hidden'}`}>
-                        {[slide2, slide3, slide4, slide5].map((imgUrl, i) => (
-                            <div key={i} className="gallery__item">
-                                <img src={imgUrl} alt={`Ambiance Blossom ${i + 1}`} className="gallery__img" />
-                            </div>
-                        ))}
-                    </div>
-                </section>
+                {/* ── GALERIE DÉFILANTE BLOSSOM (13 PHOTOS EN SLIDER CONTINU & LIGHTBOX) ── */}
+                <PhotoGallery />
 
                 {/* ── AVIS ── */}
                 <section id="faq" className="press" ref={pressRef}>

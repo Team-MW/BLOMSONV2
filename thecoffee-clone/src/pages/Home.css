@@ -315,24 +315,381 @@
     padding: 140px 80px;
     background: var(--off-white);
     text-align: center;
+    position: relative;
 }
 
 .carte-section__header {
-    margin-bottom: 80px;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.carte-section__img {
-    max-width: 1400px;
-    margin: 0 auto;
+.carte-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(194, 122, 78, 0.1);
+    color: var(--terracotta);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    border: 1px solid rgba(194, 122, 78, 0.25);
+}
+
+.carte-badge__pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    box-shadow: 0 0 0 0 rgba(194, 122, 78, 0.7);
+    animation: cartePulse 2s infinite;
+}
+
+@keyframes cartePulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(194, 122, 78, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(194, 122, 78, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(194, 122, 78, 0);
+    }
+}
+
+.carte-section__lead {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--dark-gray);
+    margin-bottom: 35px;
+}
+
+/* ── BOUTONS D'ACTION CARTE ── */
+.carte-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.btn-carte-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--terracotta) 0%, #aa6438 100%);
+    color: var(--white);
+    padding: 16px 32px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(194, 122, 78, 0.35);
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-carte-download svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.btn-carte-download:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(194, 122, 78, 0.45);
+    background: linear-gradient(135deg, #d38555 0%, var(--terracotta) 100%);
+    color: var(--white);
+}
+
+.btn-carte-download:hover svg {
+    transform: translateY(2px);
+}
+
+.btn-carte-pill {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 3px 8px;
     border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
 }
 
-.carte-section__img img {
+.btn-carte-view {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--black);
+    padding: 16px 28px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--light-gray);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: all 0.35s ease;
+}
+
+.btn-carte-view svg {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-carte-view:hover {
+    background: var(--cream);
+    border-color: var(--mid-gray);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+
+/* ── HIGHLIGHTS CARTE ── */
+.carte-highlights {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: left;
+}
+
+.carte-highlight-card {
+    background: var(--white);
+    padding: 32px 28px;
+    border-radius: 20px;
+    border: 1px solid rgba(232, 227, 219, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: all 0.35s ease;
+}
+
+.carte-highlight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.07);
+    border-color: var(--blush);
+}
+
+.carte-highlight-icon {
+    font-size: 32px;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+.carte-highlight-card h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 10px;
+}
+
+.carte-highlight-card p {
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* ── CARTE DISPLAY CARD (MOCKUP) ── */
+.carte-section__img {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carte-display-card {
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(30, 26, 20, 0.12);
+    border: 1px solid var(--light-gray);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.carte-display-card:hover {
+    box-shadow: 0 35px 90px rgba(30, 26, 20, 0.18);
+}
+
+.carte-display-card__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: #fbf9f6;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.carte-display-card__dots {
+    display: flex;
+    gap: 8px;
+}
+
+.carte-display-card__dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--light-gray);
+    display: inline-block;
+}
+
+.carte-display-card__dots span:nth-child(1) { background: #ff5f56; }
+.carte-display-card__dots span:nth-child(2) { background: #ffbd2e; }
+.carte-display-card__dots span:nth-child(3) { background: #27c93f; }
+
+.carte-display-card__filename {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--dark-gray);
+    letter-spacing: 0.05em;
+    font-family: monospace;
+}
+
+.carte-display-card__quick-dl {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(194, 122, 78, 0.08);
+    transition: all 0.25s ease;
+}
+
+.carte-display-card__quick-dl svg {
+    width: 14px;
+    height: 14px;
+}
+
+.carte-display-card__quick-dl:hover {
+    background: var(--terracotta);
+    color: var(--white);
+}
+
+.carte-display-card__link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.carte-display-card__link img {
     width: 100%;
     height: auto;
     display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carte-display-card:hover .carte-display-card__link img {
+    transform: scale(1.02);
+}
+
+.carte-display-card__hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 26, 20, 0.35);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.carte-display-card:hover .carte-display-card__hover-overlay {
+    opacity: 1;
+}
+
+.carte-display-card__hover-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--black);
+    padding: 14px 28px;
+    border-radius: 40px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(10px);
+    transition: transform 0.35s ease;
+}
+
+.carte-display-card__hover-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.carte-display-card:hover .carte-display-card__hover-btn {
+    transform: translateY(0);
+}
+
+.carte-display-card__bottom-bar {
+    padding: 18px 24px;
+    background: #fbf9f6;
+    border-top: 1px solid var(--light-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--dark-gray);
+}
+
+.carte-bottom-download-link {
+    color: var(--terracotta);
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.carte-bottom-download-link:hover {
+    color: var(--black);
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .carte-section {
+        padding: 90px 24px;
+    }
+
+    .carte-highlights {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .carte-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-carte-download,
+    .btn-carte-view {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .carte-display-card__bottom-bar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
 }
 
 /* ── GALERIE ── */

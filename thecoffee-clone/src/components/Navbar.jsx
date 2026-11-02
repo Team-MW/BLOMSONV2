@@ -48,8 +48,9 @@ export default function Navbar() {
     }
 
     const navLinks = [
-        { label: 'Le Menu', path: '/#menu' },
+        { label: 'La Carte', path: '/#menu' },
         { label: 'Notre Concept', path: '/#concept' },
+        { label: 'En Images', path: '/#galerie' },
         { label: 'Gourmandise', path: '/#gourmandise' },
         { label: 'Où nous trouver ?', path: '/#locations' },
         { label: 'Vos Avis', path: '/#faq' },
