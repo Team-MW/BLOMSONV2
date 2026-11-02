@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import './Home.css'
 import PhotoGallery from '../components/PhotoGallery'
-import imageCarte from '../assets/carte.png'
+import imageCarte from '../assets/carte_blossom_officielle.png'
+import cafeEngagementImg from '../assets/cafe_engagement.jpeg'
 
 // Slide indicators component
 function SlideIndicators({ count, active, onChange }) {
@@ -38,10 +39,10 @@ function useInView(threshold = 0.2) {
 
 const HERO_SLIDES = [
     {
-        img: '/blossom_brunch_hero.png',
+        img: '/hero_bg.jpg',
         title: 'Brunch. Coffee.',
         sub: 'Toulouse Centre',
-        action: 'Le Menu',
+        action: 'La Carte',
         link: '#menu',
     },
     {
@@ -298,7 +299,7 @@ export default function Home() {
                     </div>
                     <div className={`history__visual ${historyInView ? 'fade-up fade-up--delay2' : 'fade-hidden'}`}>
                         <div className="history__img-wrap">
-                            <img src="/blossom_latte_art.png" alt="Latte Art Specialty Coffee" />
+                            <img src={cafeEngagementImg} alt="Café de spécialité Blossom Coffee" />
                             <div className="history__year" style={{ bottom: 'auto', top: '24px', left: 'auto', right: '24px' }}>
                                 <span className="history__year-num" style={{ fontSize: '24px' }}>7j/7</span>
                                 <span className="history__year-label">ouvert</span>
