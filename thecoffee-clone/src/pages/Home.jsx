@@ -7,20 +7,6 @@ import imageCarte from '../assets/carte_blossom_officielle.png'
 import cafeEngagementImg from '../assets/cafe_engagement.jpeg'
 
 // Slide indicators component
-function SlideIndicators({ count, active, onChange }) {
-    return (
-        <div className="slide-indicators">
-            {Array.from({ length: count }).map((_, i) => (
-                <button
-                    key={i}
-                    className={`slide-dot ${i === active ? 'slide-dot--active' : ''}`}
-                    onClick={() => onChange(i)}
-                    aria-label={`Slide ${i + 1}`}
-                />
-            ))}
-        </div>
-    )
-}
 
 // Observer hook for scroll animations
 function useInView(threshold = 0.2) {
@@ -37,25 +23,7 @@ function useInView(threshold = 0.2) {
     return [ref, inView]
 }
 
-const HERO_SLIDES = [
-    {
-        img: '/hero_bg.jpg',
-        title: 'Brunch. Coffee.',
-        sub: 'Toulouse Centre',
-        action: 'La Carte',
-        link: '#menu',
-    },
-    {
-        img: '/blossom_cafe_interior.png',
-        title: 'Good Vibes.',
-        sub: 'Ambiance Blossom',
-        action: 'Réserver 🥞',
-        link: 'tel:+33783846168',
-    }
-]
-
 export default function Home() {
-    const [slide, setSlide] = useState(0)
     const [heroRef, heroInView] = useInView(0.1)
     const [conceptRef, conceptInView] = useInView(0.2)
     const [historyRef, historyInView] = useInView(0.2)
@@ -63,14 +31,6 @@ export default function Home() {
     const [globalRef, globalInView] = useInView(0.05)
     const [carteRef, carteInView] = useInView(0.2)
     const [galleryRef, galleryInView] = useInView(0.2)
-
-    // Auto-advance slides
-    useEffect(() => {
-        const id = setInterval(() => {
-            setSlide(s => (s + 1) % HERO_SLIDES.length)
-        }, 5000)
-        return () => clearInterval(id)
-    }, [])
 
     return (
         <>
@@ -80,41 +40,36 @@ export default function Home() {
             </Helmet>
             <main className="home">
 
-                {/* ── HERO ── */}
+                {/* ── HERO (FOND UNIQUE AVEC LA DERNIÈRE PHOTO MISE) ── */}
                 <section className="hero" ref={heroRef}>
-                    {HERO_SLIDES.map((s, i) => (
-                        <div
-                            key={i}
-                            className={`hero__slide ${i === slide ? 'hero__slide--active' : ''}`}
-                        >
-                            <img src={s.img} alt={s.title} className="hero__img" />
-                            <div className="hero__overlay" style={{ background: 'linear-gradient(to bottom, transparent 20%, rgba(0, 0, 0, 0.4) 100%)' }} />
-                        </div>
-                    ))}
+                    <div className="hero__slide hero__slide--active">
+                        <img src="/hero_bg.jpg" alt="Blossom Coffee Toulouse" className="hero__img" />
+                        <div className="hero__overlay" style={{ background: 'linear-gradient(to bottom, transparent 20%, rgba(0, 0, 0, 0.55) 100%)' }} />
+                    </div>
 
                     <div className={`hero__content ${heroInView ? 'hero__content--visible' : ''}`}>
-                        <span className="hero__jp">{HERO_SLIDES[slide].sub}</span>
-                        <h1 className="hero__title">{HERO_SLIDES[slide].title}</h1>
+                        <span className="hero__jp">Toulouse Centre</span>
+                        <h1 className="hero__title">Brunch. Coffee.</h1>
                         <p className="hero__tagline" style={{ letterSpacing: '0.15em', fontSize: '15px' }}>
                             BLOSSOM COFFEE
                         </p>
                     </div>
 
                     <div className="hero__bottom">
-                        <a href={HERO_SLIDES[slide].link} className="hero__cta-pill">
-                            <span>{HERO_SLIDES[slide].action}</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+                        <div className="hero__cta-group">
+                            <a href="#menu" className="hero__cta-pill">
+                                <span>La Carte</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+                            </a>
+                            <a href="#locations" className="hero__cta-pill hero__cta-pill--secondary">
+                                <span>Nous Rejoindre</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+                            </a>
+                        </div>
+
+                        <a href="#menu" className="hero__plus" aria-label="Défiler vers le bas">
+                            <span>↓</span>
                         </a>
-
-                        <button className="hero__plus" aria-label="Scroll down">
-                            <span>+</span>
-                        </button>
-
-                        <SlideIndicators
-                            count={HERO_SLIDES.length}
-                            active={slide}
-                            onChange={setSlide}
-                        />
                     </div>
                 </section>
 
@@ -366,33 +321,126 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* ── OU NOUS TROUVER ── */}
-                <section id="locations" className="global" ref={globalRef} style={{ minHeight: '600px' }}>
-                    <div className="global__bg">
-                        <img src="/blossom_brunch_hero.png" alt="Toulouse localisation" />
-                        <div className="global__overlay" style={{ background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4))' }} />
+                {/* ── NOUS REJOINDRE (ADRESSE, MÉTROS, BUS, CARTE MAPS & ITINÉRAIRE DIRECT) ── */}
+                <section id="locations" className="locations-section" ref={globalRef}>
+                    <div className={`locations__header ${globalInView ? 'fade-up' : 'fade-hidden'}`}>
+                        <span className="section-eyebrow">Au Cœur de Toulouse</span>
+                        <h2 className="section-title">Nous Rejoindre</h2>
+                        <p className="locations__lead">
+                            Passez nous faire un coucou au café pour savourer nos boissons signatures, notre café de spécialité et nos brunchs maison.
+                        </p>
                     </div>
-                    <div className={`global__content ${globalInView ? 'fade-up' : 'fade-hidden'}`}>
-                        <span className="section-eyebrow global__eyebrow">Au Cœur de Toulouse</span>
-                        <h2 className="global__title" style={{ marginBottom: '40px' }}>On se voit quand ?</h2>
-                        <div className="global__info-card">
-                            <div className="global__info-item">
-                                <h4>Blossom Coffee</h4>
-                                <p>11 Rue des Trois Renards<br />31000 Toulouse</p>
+
+                    <div className={`locations__container ${globalInView ? 'fade-up fade-up--delay' : 'fade-hidden'}`}>
+                        {/* Colonne Gauche : Carte Google Maps interactive */}
+                        <div className="locations__map-col">
+                            <div className="locations__map-wrapper">
+                                <iframe
+                                    title="Localisation Blossom Coffee Toulouse"
+                                    src="https://maps.google.com/maps?q=Blossom+Coffee+11+Rue+des+Trois+Renards+31000+Toulouse&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                    className="locations__iframe"
+                                    loading="lazy"
+                                    allowFullScreen
+                                />
+                                <div className="locations__map-badge">
+                                    <span className="locations__map-dot"></span>
+                                    <span>Blossom Coffee • 11 Rue des Trois Renards</span>
+                                </div>
                             </div>
-                            <div className="global__info-divider" />
-                            <div className="global__info-item">
-                                <h4>Espaces</h4>
-                                <p>Nous disposons d'une terrasse ainsi que d'une salle à l'étage pour vous accueillir (toilettes non accessibles PMR).</p>
-                            </div>
-                            <div className="global__info-item">
-                                <p>🚇 Métro A - Esquirol<br />🚌 Bus L4, L7, L9</p>
+
+                            <div className="locations__map-actions">
+                                <a
+                                    href="https://www.google.com/maps/dir/?api=1&destination=Blossom+Coffee+11+Rue+des+Trois+Renards+31000+Toulouse"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn-itinerary-primary"
+                                    title="Ouvrir l'itinéraire direct dans Google Maps"
+                                >
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <polygon points="3 11 22 2 13 21 11 13 3 11" />
+                                    </svg>
+                                    <span>Itinéraire Direct Google Maps</span>
+                                </a>
+
+                                <a
+                                    href="https://maps.google.com/?q=Blossom+Coffee+11+Rue+des+Trois+Renards+31000+Toulouse"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn-itinerary-secondary"
+                                    title="Voir sur Google Maps"
+                                >
+                                    <span>Ouvrir sur Maps ↗</span>
+                                </a>
                             </div>
                         </div>
-                        <Link to="/faq" className="btn-white" style={{ marginTop: '20px', padding: '15px 30px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                            FAQ
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ marginLeft: '10px', width: '20px', height: '20px' }}><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                        </Link>
+
+                        {/* Colonne Droite : Fiches Pratiques & Transports */}
+                        <div className="locations__info-col">
+                            
+                            {/* Card Adresse & Contact */}
+                            <div className="location-card">
+                                <div className="location-card__icon">📍</div>
+                                <div className="location-card__content">
+                                    <h3>Adresse</h3>
+                                    <p className="location-card__main-text">11 Rue des Trois Renards<br />31000 Toulouse</p>
+                                    <div className="location-card__links">
+                                        <a href="tel:+33783846168" className="location-contact-link">
+                                            📞 +33 7 83 84 61 68
+                                        </a>
+                                        <span className="location-card__dot-sep">•</span>
+                                        <span className="location-tag-open">Ouvert 7j/7</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Card Transports en commun (Métro, Bus, Vélo) */}
+                            <div className="location-card">
+                                <div className="location-card__icon">🚇</div>
+                                <div className="location-card__content">
+                                    <h3>Lignes de Métro & Bus</h3>
+                                    <div className="transit-grid">
+                                        <div className="transit-badge-group">
+                                            <span className="transit-pill metro-a">Métro A</span>
+                                            <span className="transit-desc"><strong>Esquirol</strong> — à 2 min à pied</span>
+                                        </div>
+                                        <div className="transit-badge-group">
+                                            <span className="transit-pill metro-b">Métro B</span>
+                                            <span className="transit-desc"><strong>Carmes</strong> — à 4 min à pied</span>
+                                        </div>
+                                        <div className="transit-badge-group">
+                                            <span className="transit-pill bus">Bus</span>
+                                            <span className="transit-desc">Lignes <strong>L4, L7, L9, 44</strong> (Arrêt Esquirol)</span>
+                                        </div>
+                                        <div className="transit-badge-group">
+                                            <span className="transit-pill velo">🚲 Vélo</span>
+                                            <span className="transit-desc">VélôToulouse n°10 (Esquirol) & n°26 (Trinité)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Card Horaires & Espaces */}
+                            <div className="location-card">
+                                <div className="location-card__icon">🕒</div>
+                                <div className="location-card__content">
+                                    <h3>Horaires & Espaces</h3>
+                                    <div className="hours-list">
+                                        <div className="hours-row">
+                                            <span>Lundi – Vendredi</span>
+                                            <strong>11:30 – 19:00</strong>
+                                        </div>
+                                        <div className="hours-row">
+                                            <span>Samedi – Dimanche</span>
+                                            <strong>10:30 – 19:00</strong>
+                                        </div>
+                                    </div>
+                                    <p className="location-card__note">
+                                        ☀️ Terrasse ensoleillée & salle cosy à l'étage pour déguster votre brunch en toute tranquillité.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </section>
 

@@ -226,14 +226,19 @@
     right: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.hero__cta-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 .hero__cta-pill {
-    position: absolute;
-    left: 40px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 12px;
     font-size: 14px;
@@ -243,11 +248,11 @@
     color: var(--white);
     text-decoration: none;
     border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 14px 32px;
+    padding: 14px 28px;
     border-radius: 40px;
     transition: all 0.3s ease;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
 }
 
 .hero__cta-pill:hover {
@@ -256,20 +261,45 @@
     color: var(--terracotta);
 }
 
+.hero__cta-pill--secondary {
+    background: rgba(194, 122, 78, 0.75);
+    border-color: var(--terracotta);
+}
+
+.hero__cta-pill--secondary:hover {
+    background: var(--white);
+    color: var(--terracotta);
+    border-color: var(--white);
+}
+
 .hero__cta-pill svg {
     width: 16px;
     height: 16px;
 }
 
 .hero__plus {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 300;
     color: var(--white);
-    background: none;
-    border: none;
+    background: rgba(0, 0, 0, 0.2);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     cursor: pointer;
     line-height: 1;
     animation: pulse 2s infinite;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s;
+}
+
+.hero__plus:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
 }
 
 @keyframes pulse {
@@ -1052,96 +1082,365 @@
     color: var(--dark-gray);
 }
 
-/* ── GLOBAL ── */
-.global {
+/* ── LOCATIONS SECTION (NOUS REJOINDRE) ── */
+.locations-section {
+    padding: 140px 80px;
+    background: var(--off-white);
     position: relative;
-    height: 85vh;
-    min-height: 700px;
+}
+
+.locations__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 70px;
+}
+
+.locations__lead {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--dark-gray);
+    margin-top: 15px;
+}
+
+.locations__container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 48px;
+    align-items: stretch;
+}
+
+/* ── MAP COLUMN ── */
+.locations__map-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.locations__map-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    height: 480px;
+    box-shadow: 0 15px 45px rgba(30, 26, 20, 0.08);
+    border: 1px solid var(--light-gray);
+    background: var(--cream);
+}
+
+.locations__iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    filter: saturate(0.95) contrast(1.02);
+}
+
+.locations__map-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--black);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.locations__map-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    box-shadow: 0 0 0 3px rgba(194, 122, 78, 0.25);
+}
+
+.locations__map-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-itinerary-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--terracotta) 0%, #aa6438 100%);
+    color: var(--white);
+    padding: 16px 28px;
+    border-radius: 40px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(194, 122, 78, 0.3);
+    transition: all 0.35s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-itinerary-primary svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.btn-itinerary-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(194, 122, 78, 0.4);
+    background: linear-gradient(135deg, #d38555 0%, var(--terracotta) 100%);
+    color: var(--white);
+}
+
+.btn-itinerary-primary:hover svg {
+    transform: translateX(3px) translateY(-3px);
+}
+
+.btn-itinerary-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    color: var(--black);
+    padding: 16px 24px;
+    border-radius: 40px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: 1px solid var(--light-gray);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.btn-itinerary-secondary:hover {
+    background: var(--cream);
+    color: var(--terracotta);
+    border-color: var(--terracotta);
+    transform: translateY(-2px);
+}
+
+/* ── INFO COLUMN & CARDS ── */
+.locations__info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.location-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid rgba(232, 227, 219, 0.8);
+    box-shadow: 0 10px 30px rgba(30, 26, 20, 0.04);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(30, 26, 20, 0.08);
+    border-color: var(--blush);
+}
+
+.location-card__icon {
+    font-size: 26px;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: var(--cream);
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    flex-shrink: 0;
 }
 
-.global__bg {
-    position: absolute;
-    inset: 0;
+.location-card__content {
+    flex: 1;
 }
 
-.global__bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 8s ease;
-}
-
-.global:hover .global__bg img {
-    transform: scale(1.04);
-}
-
-.global__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
-}
-
-.global__content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    color: var(--white);
-    padding: 60px;
-    max-width: 800px;
-}
-
-.global__eyebrow {
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 24px;
-}
-
-.global__title {
+.location-card__content h3 {
     font-family: var(--font-display);
-    font-size: clamp(48px, 6vw, 90px);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--white);
-    margin-bottom: 40px;
-}
-
-.global__info-card {
-    margin: 0 auto 48px;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 48px;
-    border-radius: 12px;
-    text-align: left;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.global__info-item h4 {
-    font-family: var(--font-body);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--white);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--black);
     margin-bottom: 8px;
 }
 
-.global__info-item p {
-    font-size: 16px;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.85);
+.location-card__main-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    margin-bottom: 12px;
 }
 
-.global__info-divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.15);
-    width: 100%;
+.location-card__links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 13px;
+}
+
+.location-contact-link {
+    color: var(--terracotta);
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.location-contact-link:hover {
+    color: var(--black);
+    text-decoration: underline;
+}
+
+.location-card__dot-sep {
+    color: var(--light-gray);
+}
+
+.location-tag-open {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(143, 168, 138, 0.15);
+    color: #466b41;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ── TRANSIT GRID & PILLS ── */
+.transit-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.transit-badge-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--dark-gray);
+}
+
+.transit-pill {
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    min-width: 72px;
+    text-align: center;
+}
+
+.transit-pill.metro-a {
+    background: #e63946;
+    color: var(--white);
+}
+
+.transit-pill.metro-b {
+    background: #e9c46a;
+    color: #2b2d42;
+}
+
+.transit-pill.bus {
+    background: #457b9d;
+    color: var(--white);
+}
+
+.transit-pill.velo {
+    background: var(--sage);
+    color: var(--white);
+}
+
+.transit-desc strong {
+    color: var(--black);
+    font-weight: 600;
+}
+
+/* ── HOURS & EXTRAS ── */
+.hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--dark-gray);
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--light-gray);
+}
+
+.hours-row strong {
+    color: var(--black);
+    font-weight: 600;
+}
+
+.location-card__note {
+    font-size: 13px;
+    color: var(--mid-gray);
+    line-height: 1.5;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .locations-section {
+        padding: 100px 32px;
+    }
+
+    .locations__container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .locations__map-wrapper {
+        height: 380px;
+    }
+}
+
+@media (max-width: 600px) {
+    .locations-section {
+        padding: 80px 20px;
+    }
+
+    .locations__map-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-itinerary-primary,
+    .btn-itinerary-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .location-card {
+        flex-direction: column;
+        gap: 14px;
+        padding: 20px;
+    }
 }
 
 /* ── RESPONSIVE ── */
