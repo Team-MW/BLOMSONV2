@@ -148,3 +148,9 @@
         padding: 20px 24px;
     }
 }
+.footer__logo-img {
+    width: 120px;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+}

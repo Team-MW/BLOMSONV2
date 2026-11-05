@@ -7,8 +7,7 @@ export default function Footer() {
             <div className="footer__top">
                 <div className="footer__brand">
                     <div className="footer__logo">
-                        <span className="footer__logo-en">BLOSSOM</span>
-                        <span className="footer__logo-jp">COFFEE</span>
+                        <img src="/logo-blossom.png" alt="Blossom Coffee & Brunch" className="footer__logo-img" />
                     </div>
                     <p className="footer__tagline">
                         On se voit quand ?<br />
@@ -17,7 +16,7 @@ export default function Footer() {
                         06 50 21 64 50
                     </p>
                     <div className="footer__socials">
-                        <a href="#" aria-label="Instagram">
+                        <a href="https://www.instagram.com/blossom_coffee_brunch/" target="_blank" rel="noreferrer" aria-label="Instagram">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                                 <rect x="2" y="2" width="20" height="20" rx="5" />
                                 <circle cx="12" cy="12" r="4" />
@@ -36,13 +35,13 @@ export default function Footer() {
                     <div className="footer__col">
                         <h3 className="footer__col-title">Horaires</h3>
                         <nav className="footer__nav" style={{ color: 'var(--mid-gray)', fontSize: '13px', lineHeight: '2' }}>
-                            <span>Lundi 11:30–19:00</span>
-                            <span>Mardi 11:30–19:00</span>
-                            <span>Mercredi 11:30–19:00</span>
-                            <span>Jeudi 11:30–19:00</span>
-                            <span>Vendredi 11:30–19:00</span>
-                            <span>Samedi 10:30–19:00</span>
-                            <span>Dimanche 10:30–19:00</span>
+                            <span>Lundi 11:00–18:00</span>
+                            <span>Mardi 11:00–18:00</span>
+                            <span>Mercredi Fermé</span>
+                            <span>Jeudi 11:00–18:00</span>
+                            <span>Vendredi 11:00–18:00</span>
+                            <span>Samedi 10:00–19:00</span>
+                            <span>Dimanche 10:00–19:00</span>
                         </nav>
                     </div>
                     <div className="footer__col">

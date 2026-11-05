@@ -46,7 +46,7 @@ const faqsData = [
         questions: [
             {
                 q: "Quelles sont vos horaires d'ouverture ?",
-                a: "Nous sommes ouverts 7 jours sur 7. Nos portes ouvrent à 11h00 et nous fermons à 18h45."
+                a: "Nous sommes ouverts du lundi au dimanche, sauf le mercredi. Lundi, mardi, jeudi et vendredi : 11h00 – 18h00. Samedi et dimanche : 10h00 – 19h00."
             },
             {
                 q: "Acceptez-vous les animaux (Dog Friendly) ?",

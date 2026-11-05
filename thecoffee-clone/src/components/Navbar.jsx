@@ -64,8 +64,7 @@ export default function Navbar() {
                 </div>
 
                 <Link to="/" className="navbar__logo" onClick={() => { setMenuOpen(false); window.scrollTo(0, 0); }}>
-                    <span className="navbar__logo-en">BLOSSOM</span>
-                    <span className="navbar__logo-jp">COFFEE</span>
+                    <img src="/logo-blossom.png" alt="Blossom Coffee & Brunch" className="navbar__logo-img" />
                 </Link>
 
                 <div className="navbar__right">

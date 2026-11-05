@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import './Home.css'
 import PhotoGallery from '../components/PhotoGallery'
+import InstagramReels from '../components/InstagramReels'
 import imageCarte from '../assets/carte_blossom_officielle.png'
 import cafeEngagementImg from '../assets/cafe_engagement.jpeg'
 
@@ -25,7 +26,6 @@ function useInView(threshold = 0.2) {
 
 export default function Home() {
     const [heroRef, heroInView] = useInView(0.1)
-    const [conceptRef, conceptInView] = useInView(0.2)
     const [historyRef, historyInView] = useInView(0.2)
     const [pressRef, pressInView] = useInView(0.2)
     const [globalRef, globalInView] = useInView(0.05)
@@ -179,7 +179,7 @@ export default function Home() {
                             </a>
 
                             <div className="carte-display-card__bottom-bar">
-                                <p>Disponible 7j/7 au café • 11 Rue des Trois Renards, 31000 Toulouse</p>
+                                <p>Disponible au café • 11 Rue des Trois Renards, 31000 Toulouse</p>
                                 <a
                                     href="/carte.pdf"
                                     download="Carte-Blossom-Coffee.pdf"
@@ -192,30 +192,8 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* ── REINVENTED ── */}
-                <section id="concept" className="roasters" ref={conceptRef}>
-                    <div className={`roasters__media ${conceptInView ? 'fade-up' : 'fade-hidden'}`}>
-                        <img src="/blossom_cafe_interior.png" alt="Blossom Coffee Vibes" className="roasters__img" />
-                    </div>
-                    <div className={`roasters__text ${conceptInView ? 'fade-up fade-up--delay' : 'fade-hidden'}`}>
-                        <span className="section-eyebrow">Notre Concept</span>
-                        <h2 className="section-title">Coffee Shop<br />Reinvented</h2>
-                        <p className="section-body">
-                            Plus qu'un simple café, Blossom est une expérience sensorielle. Une fusion audacieuse entre l'art du café de spécialité et une culture pop vibrante.
-                        </p>
-                        <div className="concept-tags">
-                            {["Good Vibes Only", "Specialty Coffee", "Ambiance Blossom", "Food Blossom", "Coffee Art", "Interior"].map(tag => (
-                                <span key={tag} className="concept-tag"> {tag} </span>
-                            ))}
-                        </div>
-                        <div>
-                            <Link to="#" className="btn-outline">
-                                notre univers
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                            </Link>
-                        </div>
-                    </div>
-                </section>
+                {/* ── REELS INSTAGRAM ── */}
+                <InstagramReels />
 
                 {/* ── MARQUEE ── */}
                 <div className="marquee-wrap">
@@ -256,17 +234,17 @@ export default function Home() {
                         <div className="history__img-wrap">
                             <img src={cafeEngagementImg} alt="Café de spécialité Blossom Coffee" />
                             <div className="history__year" style={{ bottom: 'auto', top: '24px', left: 'auto', right: '24px' }}>
-                                <span className="history__year-num" style={{ fontSize: '24px' }}>7j/7</span>
-                                <span className="history__year-label">ouvert</span>
+                                <span className="history__year-num" style={{ fontSize: '24px' }}>6j/7</span>
+                                <span className="history__year-label">fermé le mercredi</span>
                             </div>
                         </div>
                         <div className="history__stats">
                             <div className="history__stat">
-                                <span className="history__stat-num" style={{ fontSize: '18px', whiteSpace: 'nowrap' }}>11:30 - 19:00</span>
-                                <span className="history__stat-label">Lun - Ven</span>
+                                <span className="history__stat-num" style={{ fontSize: '18px', whiteSpace: 'nowrap' }}>11:00 - 18:00</span>
+                                <span className="history__stat-label">Lun, Mar, Jeu, Ven</span>
                             </div>
                             <div className="history__stat">
-                                <span className="history__stat-num" style={{ fontSize: '18px', whiteSpace: 'nowrap' }}>10:30 - 19:00</span>
+                                <span className="history__stat-num" style={{ fontSize: '18px', whiteSpace: 'nowrap' }}>10:00 - 19:00</span>
                                 <span className="history__stat-label">Sam - Dim</span>
                             </div>
                             <div className="history__stat">
@@ -388,7 +366,7 @@ export default function Home() {
                                             📞 +33 7 83 84 61 68
                                         </a>
                                         <span className="location-card__dot-sep">•</span>
-                                        <span className="location-tag-open">Ouvert 7j/7</span>
+                                        <span className="location-tag-open">Fermé le mercredi</span>
                                     </div>
                                 </div>
                             </div>
@@ -426,12 +404,20 @@ export default function Home() {
                                     <h3>Horaires & Espaces</h3>
                                     <div className="hours-list">
                                         <div className="hours-row">
-                                            <span>Lundi – Vendredi</span>
-                                            <strong>11:30 – 19:00</strong>
+                                            <span>Lundi – Mardi</span>
+                                            <strong>11:00 – 18:00</strong>
+                                        </div>
+                                        <div className="hours-row">
+                                            <span>Mercredi</span>
+                                            <strong>Fermé</strong>
+                                        </div>
+                                        <div className="hours-row">
+                                            <span>Jeudi – Vendredi</span>
+                                            <strong>11:00 – 18:00</strong>
                                         </div>
                                         <div className="hours-row">
                                             <span>Samedi – Dimanche</span>
-                                            <strong>10:30 – 19:00</strong>
+                                            <strong>10:00 – 19:00</strong>
                                         </div>
                                     </div>
                                     <p className="location-card__note">
